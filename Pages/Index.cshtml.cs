@@ -14,7 +14,7 @@ namespace mantencion.Pages
     {
         private readonly ILogger<IndexModel> _logger;
 
-        public List<Mecanico> ListaMecanicos = new List<Mecanico>();
+       
 
         public IndexModel(ILogger<IndexModel> logger)
         {
@@ -23,9 +23,7 @@ namespace mantencion.Pages
 
         public void OnGet()
         {
-            BaseDatos bd = new BaseDatos();
-            ListaMecanicos = bd.Mecanicos.ToList();
-
+            
         }
     }
 }
