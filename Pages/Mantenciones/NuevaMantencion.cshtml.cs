@@ -36,12 +36,13 @@ namespace mantencion.Pages.Mantenciones{
             datos.SaveChanges();
 
 
+
             // // inresar a mantencion material
-            // MantencionMaterial manMaterial = new MantencionMaterial();
+            MantencionMaterial manMaterial = new MantencionMaterial();
 
 
             // ingresar a mantencion mecanico
-            // MantencionMecanico manMecanico = new MantencionMecanico();
+            MantencionMecanico manMecanico = new MantencionMecanico();
             
             
             
