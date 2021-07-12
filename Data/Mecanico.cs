@@ -7,6 +7,8 @@ namespace mantencion.Data{
         public int id {get; set;} 
         public string rut {get;set;}       
         public string nombre {get;set;}
-        public List<Trabaja_en> Trabaja_Ens {get;set;}
+        public string apellido {get;set;}
+
+        public List<MantencionMecanico> MantencionMecanicos {get;set;}
     }
 }

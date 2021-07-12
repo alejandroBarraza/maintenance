@@ -1,6 +1,6 @@
 namespace mantencion.Data{
 
-    public class SeUsaEn{
+    public class MantencionMaterial{
 
         public int id{get;set;}     
         public int id_mantencion {get;set;}

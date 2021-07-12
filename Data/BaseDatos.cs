@@ -11,10 +11,10 @@ namespace mantencion.Data{
         }
 
         public DbSet<Mantencion> Mantencions { get; set; }
-        public DbSet<Material> Materials { get; set; }
+        public DbSet<MantencionMaterial> MantencionMaterials { get; set; }
+        public DbSet<MantencionMecanico> MantencionMecanicos { get; set; }
+        public DbSet<Material> Matarials { get; set; }
         public DbSet<Mecanico> Mecanicos { get; set; }
-        public DbSet<SeUsaEn> SeUsaEns { get; set; }
-        public DbSet<Trabaja_en> Trabaja_ens { get; set; }
       
     }
 

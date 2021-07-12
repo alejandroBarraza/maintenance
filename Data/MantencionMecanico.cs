@@ -1,10 +1,6 @@
-
-
-
-
 namespace mantencion.Data{
 
-    public class Trabaja_en{
+    public class MantencionMecanico{
 
         public int id {get;set;}
         public int id_mantencion {get;set;}

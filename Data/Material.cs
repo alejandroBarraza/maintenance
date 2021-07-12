@@ -5,7 +5,8 @@ namespace mantencion.Data{
 
         public int id{get;set;}
         public string nombreMaterial {get;set;}
-        public List<SeUsaEn> SeUsaEns {get;set;}
+        public int cantidad {get;set;}
+        public List<MantencionMaterial> MantencionMaterials {get;set;}
         
      
 

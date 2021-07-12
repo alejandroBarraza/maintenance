@@ -8,8 +8,8 @@ namespace mantencion.Data
         public int id {get;set;}    
         public DateTime fecha { set; get; }
         public string descripcion {get;set;}
-        public List< Trabaja_en> Trabaja_Ens {get;set;}
-        public List< SeUsaEn> SeUsaEns {get;set;}
+        public List<MantencionMecanico> MantencionMecanicos {get;set;}
+        public List<MantencionMaterial> MantencionMaterials {get;set;}
 
 
     }
