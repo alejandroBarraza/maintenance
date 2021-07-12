@@ -6,33 +6,75 @@
     <h1 class="display-4">Nueva Mantenciones</h1>    
 </div>
 
-<div class="card">
-    <div class="card-body">
-        <form asp-page="NuevaMantencion" method="POST">
+<div class="form-container">
+    <form asp-page="NuevaMantencion" method="POST">
+
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="form-label">Fecha</label>
+            <input type="date" name="fecha">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Descripcion</label>
+            <textarea class="form-control" name="descripcion" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+
+
+        <div class="form-group">
+            <label for="">Ingrese material utilizado</label>
+            <input type="text" name="nombre_material" placeholder="ingresar material">
+        </div>
+
+        <div class="form-group">
+            <label for="">ingrese cantidad utilizado</label>
+            <input type="number" name="cantidad_material" placeholder="1,2,3.." required >
+        </div>
+        
+        <div class="form-group">
+            <select class="form-select" aria-label="Default select example">
+                <label for="exampleInputEmail1" class="form-label">Seleccione el o los mecanicos que haran la mantencion:</label>
+                <option selected>Ingresar Trabajadores</option>
+                @foreach (Mecanico mecanico in Model.Mecanicos){
+                    <option value="@mecanico.id">@mecanico.nombre</option>
+
+                }
+            </select>
+        </div>
+        <button type="submit"class="btn btn-primary">Guardar</button>
+    </form>
+
+</div>
     
-            <div class="form-group">
-
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Fecha</label>
-                    <input type="date" name="fecha">
-                </div>
-                
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Seleccione el o los mecanicos que haran la mantencion:</label>
-                    @foreach (Mecanico mecanico in Model.Mecanicos){
-                        <div class="mb-3 form-check">
-                            <input class="form-check-input" type="checkbox" value="@mecanico.id" id="flexCheckChecked" name="id_mecanico">
-                            <label class="form-check-label" for="flexCheckChecked"> @mecanico.nombre @mecanico.apellido </label>
-                        </div>
-                    }
-                </div>
+    
 
 
+
+
+        
+            
+
+
+
+            <!-- <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Fecha</label>
+                <input type="date" name="fecha">
             </div>
 
-            <button type="submit"class="btn btn-primary">Guardar</button>
+            <div  class="mb-3">
+                <label for="">Ingrese material utilizado</label>
+                <input type="text" name="nombre_material" placeholder="ingresar material">
 
-        </form>
-    </div>
+            </div>
+            
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Seleccione el o los mecanicos que haran la mantencion:</label>
+                @foreach (Mecanico mecanico in Model.Mecanicos){
+                    <div class="mb-3 form-check">
+                        <input class="form-check-input" type="checkbox" value="@mecanico.id" id="flexCheckChecked" name="id_mecanico">
+                        <label class="form-check-label" for="flexCheckChecked"> @mecanico.nombre @mecanico.apellido </label>
+                    </div>
+                }
+            </div>
+             -->
+
     
-</div>
