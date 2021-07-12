@@ -18,7 +18,7 @@ namespace mantencion.Pages.Mantenciones{
             
         }
 
-        public void OnPost(DateTime fecha, int id_mecanico,string nombre_material,string cantidad_material,string descripcion){
+        public void OnPost(DateTime fecha, int id_mecanico,string nombre_material,int cantidad_material,string descripcion){
             BaseDatos datos = new BaseDatos();
 
 
@@ -27,21 +27,24 @@ namespace mantencion.Pages.Mantenciones{
             mantencion.fecha = fecha;
             mantencion.descripcion=descripcion;
             datos.Mantencions.Add(mantencion);
+            
+            //ingresar datos a la tabla materiales 
+            Material material = new Material();
+            material.nombreMaterial = nombre_material;
+            material.cantidad = cantidad_material;
+            datos.Matarials.Add(material);
+            datos.SaveChanges();
 
-            // //ingresar datos a la tabla materiales 
-            // Material material = new Material();
-            // material.nombreMaterial= nombre_material;
-            // material.cantidad = cantidad_material;
 
             // // inresar a mantencion material
             // MantencionMaterial manMaterial = new MantencionMaterial();
 
 
             // ingresar a mantencion mecanico
-            MantencionMecanico manMecanico = new MantencionMecanico();
+            // MantencionMecanico manMecanico = new MantencionMecanico();
             
             
-            datos.SaveChanges();
+            
 
             Mecanicos = datos.Mecanicos.OrderBy( m => m.nombre).ToList();
 
