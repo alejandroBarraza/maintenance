@@ -3,61 +3,40 @@
 @using mantencion.Data
 
 <div class = "text-center">
-    <h1 class="display-4">Nueva Mantenciones</h1>    
+    <h1 class="display-4">Mencanicos participantes <br> en mantenciones</h1>    
 </div>
-<div class="form-container">
+<div class="table-container">
     <table>
-        <tr id="header" >
-            <th>numero</th>
-            <th>nombre</th>
-        </tr>
+        
+        <thead>
+            <tr id="header" class="table-tr" >
+                <th>Fecha</th>
+                <th>Descripcion</th>
+                <th>Nombre Empleado</th>
+            </tr>
+        </thead>
 
-        <tr>
-            <td>1</td>
-            <td>franz</td>
-        </tr>
+        <tbody>
+            @foreach( MantencionMecanico mm in Model.mantencionMecanicos){
 
-        <tr>
-            <td>2</td>
-            <td>ale</td>
-        </tr>
+                <tr>
+
+                    @foreach( Mantencion mantencion in Model.mantenciones){
+                        @if( mantencion.id == mm.id_mantencion){
+                            <td>@mantencion.fecha.ToString().Substring(0, 10)</td>
+                            <td>@mantencion.descripcion</td>
+                        }
+                    }
+
+                    @foreach( Mecanico mecanico in Model.mecanicos){
+                        @if( mecanico.id == mm.id_mecanico){
+                            <td>@mecanico.nombre</td>
+                        }
+                    }
+                    
+                </tr>
+            }
+        </tbody>
+
     </table>
 </div>
-<style>
-
-    table{
-        border-collapse: collapse;
-        border: 1px solid #bdc3c7;
-        box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    tr {
-        transition: all .2s ease-in;
-        cursor: pointer;
-    }
-
-    th, td{
-        padding: 12px;
-        text-align: left;
-        border-bottom: 1px solid #ddd;
-    }
-
-    #header{
-        background-color: #4adede;
-        color: #fff;
-    }
-
-    tr:hover{
-        background-color: #f5f5f5;
-        transform: scale(1.02);
-        box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0, 0, 0, 0.2);
-    }
-
-
-</style>
-
-<script>
-    function a(){
-        alert("alerta");
-    }
-</script>
