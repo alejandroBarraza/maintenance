@@ -21,9 +21,17 @@
         </div>
 
 
+        
         <div class="form-group">
-            <label for="exampleInputEmail1">Ingrese material utilizado</label>
-            <input type="text" name="nombre_material" placeholder="ingresar material">
+            <label for="">Material:    </label>
+            <select class="form-select" aria-label="Default select example" name="id_material" >
+                <label for="exampleInputEmail1" class="form-label">Seleccione el materiales que se usara en la mantencion:</label>
+                <option selected>Ingresar Material</option>
+                @foreach (Material material in Model.Materiales){
+                    <option value="@material.id">@material.nombreMaterial</option>
+
+                }
+            </select>
         </div>
 
         <div class="form-group">
@@ -32,16 +40,23 @@
         </div>
 
         <div class="form-group">
-            <select class="form-select" aria-label="Default select example">
+            <label for="">Mecanico:    </label>
+            <select class="form-select" aria-label="Default select example" name="id_mecanico">
                 <label for="exampleInputEmail1" class="form-label">Seleccione el o los mecanicos que haran la mantencion:</label>
-                <option selected>Ingresar Trabajadores</option>
+                <option selected>Ingresar Mecanicos</option>
                 @foreach (Mecanico mecanico in Model.Mecanicos){
                     <option value="@mecanico.id">@mecanico.nombre</option>
 
                 }
             </select>
         </div>
-        <button type="submit"class="btn btn-primary button">Guardar</button>
+
+        <div class="form-group">
+            <label for="">ingrese cantidad horas</label>
+            <input type="number" name="horasM" placeholder="1,2,3.." required >
+        </div>
+
+        <button type="submit"class="btn btn-primary">Guardar</button>
     </form>
 
 </div>
