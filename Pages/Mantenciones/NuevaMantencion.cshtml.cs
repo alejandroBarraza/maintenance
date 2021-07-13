@@ -33,12 +33,8 @@ namespace mantencion.Pages.Mantenciones
 
             Material resultado = datos.Matarials.FirstOrDefault(x => x.id == id_material);
             if(resultado != null){
-                Console.WriteLine("Hola");
                 resultado.cantidad = resultado.cantidad - cantidad_material;
-                Console.WriteLine(resultado.cantidad);
                 datos.SaveChanges();
-            }else{
-                Console.WriteLine(" :( ");
             }
 
             // // inresar a mantencion material
