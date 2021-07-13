@@ -1,0 +1,42 @@
+@page
+@model MecanicosModel
+@using mantencion.Data
+
+<div class = "text-center">
+    <h1 class="display-4">Mencanicos participantes <br> en mantenciones</h1>    
+</div>
+<div class="table-container">
+    <table>
+        
+        <thead>
+            <tr id="header" class="table-tr" >
+                <th>Fecha</th>
+                <th>Descripcion</th>
+                <th>Nombre Empleado</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach( MantencionMecanico mm in Model.mantencionMecanicos){
+
+                <tr>
+
+                    @foreach( Mantencion mantencion in Model.mantenciones){
+                        @if( mantencion.id == mm.id_mantencion){
+                            <td>@mantencion.fecha.ToString().Substring(0, 10)</td>
+                            <td>@mantencion.descripcion</td>
+                        }
+                    }
+
+                    @foreach( Mecanico mecanico in Model.mecanicos){
+                        @if( mecanico.id == mm.id_mecanico){
+                            <td>@mecanico.nombre</td>
+                        }
+                    }
+                    
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>

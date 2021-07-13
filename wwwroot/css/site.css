@@ -203,4 +203,43 @@ padding-bottom: 1.5rem;
 }
 
 
+/* tabla mantencion mecanico */
+/* .table-tr th tr {
+  text-align: center;
+} */
 
+table{
+  width: 80%;
+  border-collapse: collapse;
+  border: 1px solid #bdc3c7;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0, 0, 0, 0.2);
+}
+.table-container{
+  
+  margin-top:3rem;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+tr {
+  transition: all .2s ease-in;
+  cursor: pointer;
+}
+
+th, td{
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+#header{
+  background-color: #4adede;
+  color: #fff;
+}
+
+tr:hover{
+  background-color: #f5f5f5;
+  transform: scale(1.02);
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0, 0, 0, 0.2);
+}
