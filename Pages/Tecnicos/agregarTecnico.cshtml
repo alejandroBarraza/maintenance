@@ -1,0 +1,31 @@
+@page
+@model NuevoTecnicoModel
+@using mantencion.Data
+
+
+
+<div class="form-container">
+      <div class = "text-center">
+        <h1 class="display-4">Agregar Tecnico</h1> 
+    </div>  
+    <form asp-page="AgregarTecnico" method="POST">
+
+        <div class="form-group">
+            <label for="">Ingrese Nombre del Tecnico</label>
+            <input type="text" name="nombre_tecnico" placeholder="Ingrese un nombre..." required >
+        </div>
+         <div class="form-group">
+            <label for="">Ingrese Apellido del Tecnico</label>
+            <input type="text" name="apellido_tecnico" placeholder="Ingrese un apellido..." required >
+        </div>
+         <div class="form-group">
+            <label for="">Ingrese Rut del Tecnico</label>
+            <input type="text" name="rut_tecnico" placeholder="Ingrese un Rut..." required >
+        </div>
+
+        <button type="submit"class="btn btn-primary">Guardar</button>
+    </form>
+
+</div>
+
+    

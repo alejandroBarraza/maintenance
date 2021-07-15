@@ -1,0 +1,37 @@
+@page
+@model MaterialesModel
+@using mantencion.Data
+
+<div class = "text-center">
+    <h1 class="display-4">Materiales utilizados <br> en mantenciones</h1>    
+</div>
+<div class="table-container">
+    <table>
+        
+        <thead>
+            <tr id="header" class="table-tr" >
+                <th>Cantidad veces utilizado</th>
+                <th>Nombre</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach( MantencionMaterial mm in Model.mantencionMaterial){
+
+                <tr>
+
+                    <td>@mm.cantidad</td>
+
+
+                    @foreach( Material material in Model.materiales){
+                        @if( material.id == mm.id_material){
+                            <td>@material.nombreMaterial</td>
+                        }
+                    }
+                    
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>

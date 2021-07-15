@@ -1,0 +1,30 @@
+@page
+@model NuevoMaterialModel
+@using mantencion.Data
+
+
+
+<div class="form-container">
+      <div class = "text-center">
+        <h1 class="display-4">Agregar Material</h1> 
+    </div>  
+    <form asp-page="AgregarMaterial" method="POST">
+
+        
+        <div class="form-group">
+            <label for="">Ingrese nombre de material:    </label>
+             <input type="text" name="nombre_material" placeholder="Escriba un nombre..." required >
+        </div>
+
+        <div class="form-group">
+            <label for="">ingrese cantidad utilizado</label>
+            <input type="number" name="cantidad_material" placeholder="1,2,3.." required >
+        </div>
+
+        <button type="submit"class="btn btn-primary">Guardar</button>
+    </form>
+
+</div>
+    
+
+    

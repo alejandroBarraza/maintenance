@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Linq;
 using mantencion.RabbitMQ;
 
-namespace mantencion.Pages.Mantenciones
+namespace mantencion.Pages
 {
     public class NuevaMantencionModel : PageModel
     {
