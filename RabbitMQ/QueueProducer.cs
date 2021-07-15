@@ -41,15 +41,52 @@ namespace mantencion.RabbitMQ {
                                         basicProperties: null,
                                         body: body
                                     );
-                // DecodeHelper decodeHelper = JsonConvert.DeserializeObject<DecodeHelper>(Encoding.UTF8.GetString(body));
+                Console.WriteLine(message);
+        
+            }
+        }
 
+        public static void publicarMantancionProducto(Material material, int cantidad_material, string fecha ){
+
+            var factory = new ConnectionFactory() { HostName = "localhost" };
+            
+            using (var connection = factory.CreateConnection())
+
+            using (var channel = connection.CreateModel()){
+
+                channel.ExchangeDeclare(
+                    exchange: "mantencion",
+                    type: "direct"
+                    );
+
+                var message = new {
+                    nombre_material = material.nombreMaterial,
+                    cantidad_material = cantidad_material,
+                    fecha = fecha,
+                    
+                };
+
+                var body = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(message));
+
+                channel.BasicPublish(exchange: "mantencion",
+                                        routingKey: "sBodega",
+                                        basicProperties: null,
+                                        body: body
+                                    );
                 
-
                 Console.WriteLine(message);
         
             }
 
+
+
+
+
         }
+
+        
+
+
         
     }
 
