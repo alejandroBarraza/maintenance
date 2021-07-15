@@ -3,26 +3,30 @@ using System.Collections.Generic;
 using mantencion.Data;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Linq;
+using mantencion.RabbitMQ;
 
 namespace mantencion.Pages.Mantenciones
 {
     public class NuevaMantencionModel : PageModel
     {
+        private readonly BaseDatos datos = new BaseDatos();
         public List<Mecanico> Mecanicos; 
         public List<Material> Materiales;
         
         public void Onget(){
-            BaseDatos datos = new BaseDatos();
 
-             // Se carga la lista con los mecanicos 
+            // Se carga la lista con los mecanicos 
             Mecanicos = datos.Mecanicos.OrderBy( m => m.nombre).ToList();
             Materiales = datos.Matarials.OrderBy( m => m.nombreMaterial).ToList();
         }
 
         public void OnPost(DateTime fecha, int id_mecanico,int cantidad_material,string descripcion, int horasM, int id_material){
-            BaseDatos datos = new BaseDatos();
-
-
+            
+            Mecanicos = datos.Mecanicos.OrderBy( m => m.nombre).ToList();
+            Materiales = datos.Matarials.OrderBy( m => m.nombreMaterial).ToList();
+           
+            Mecanico mecanicoEnviar = Mecanicos.Find( x => x.id == id_mecanico);
+            
             //ingresar datos a la tabla mantencion
             Mantencion mantencion = new Mantencion();
             mantencion.fecha = fecha;
@@ -56,8 +60,7 @@ namespace mantencion.Pages.Mantenciones
             
             datos.SaveChanges();
 
-            Mecanicos = datos.Mecanicos.OrderBy( m => m.nombre).ToList();
-            Materiales = datos.Matarials.OrderBy( m => m.nombreMaterial).ToList();
+            QueueProducer.publicarMantencion(mecanicoEnviar, horasM, fecha.ToString().Substring(0, 10));
 
         }
 
