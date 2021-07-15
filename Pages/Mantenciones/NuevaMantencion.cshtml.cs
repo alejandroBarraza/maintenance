@@ -26,6 +26,7 @@ namespace mantencion.Pages
             Materiales = datos.Matarials.OrderBy( m => m.nombreMaterial).ToList();
            
             Mecanico mecanicoEnviar = Mecanicos.Find( x => x.id == id_mecanico);
+            Material materialEnviar = Materiales.Find( x => x.id == id_material);
             
             //ingresar datos a la tabla mantencion
             Mantencion mantencion = new Mantencion();
@@ -61,6 +62,7 @@ namespace mantencion.Pages
             datos.SaveChanges();
 
             QueueProducer.publicarMantencion(mecanicoEnviar, horasM, fecha.ToString().Substring(0, 10));
+            QueueProducer.publicarMantancionProducto(materialEnviar, cantidad_material, fecha.ToString().Substring(0, 10));
 
         }
 
